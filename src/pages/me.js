@@ -35,12 +35,3 @@ export default function Me() {
     </>
   );
 }
-
-// export async function getStaticProps(token) {
-//   console.log(token);
-//   const response = await get_me(token);
-
-//   return {
-//     props: { response },
-//   };
-// }

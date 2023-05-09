@@ -2,8 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { UserContext } from "@/context/user_context";
 
-import BasicTabs from "../TabPanel";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import RegisterForm from "../Forms/register_form";
+import LoginForm from "../Forms/login_form";
+import Image from "next/image";
+import PlantUrbanusLogo from "src/assets/images/PlantUrbanusLogo.svg";
 
 export default function Header() {
   const contextData = useContext(UserContext);
@@ -14,35 +18,34 @@ export default function Header() {
   const [visible, setVisible] = useState("visible");
 
   useEffect(() => {
-    if (token !== null) {
-      setLogged(true);
-      setVisible("hidden");
+    if (localStorage.getItem("userToken") === null) {
+      setLogged(false);
     }
-    setVisible("visible");
-  }, [token]);
+  }, [logged]);
 
   function handleClick() {
-    if (logged) {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("userToken", null);
-      }
+    if (typeof window !== "undefined") {
+      localStorage.setItem("userToken", null);
     }
-    router.push("/login");
-    // setVisible(false)
-    setLogged(!logged);
+
+    router.push("/");
+    router.reload("window.location.pathname");
   }
-
   return (
-    <>
-      <Button
-        sx={{ visibility: { visible } }}
-        variant="contained"
-        onClick={handleClick}
-      >
-        {logged ? "Log Out" : "Log In"}
-      </Button>
-
-      <BasicTabs />
-    </>
+    <Grid container spacing={2} justifyContent={"space-between"}>
+      <Grid item>nav</Grid>
+      <Grid item>
+        <Image src={PlantUrbanusLogo} alt="PlantUrbanus" height={50} priority />
+      </Grid>
+      <Grid item>
+        {logged ? (
+          <Button variant="contained" onClick={handleClick}>
+            Log Out
+          </Button>
+        ) : (
+          <LoginForm setLogged={setLogged} />
+        )}
+      </Grid>
+    </Grid>
   );
 }

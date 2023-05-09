@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import { Cloudinary } from "@cloudinary/url-gen";
 
 import { createTheme, colors, ThemeProvider } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
 
 import { useEffect, useState } from "react";
 
@@ -21,34 +23,13 @@ const theme = createTheme({
   },
 });
 export default function App({ Component, pageProps }) {
-  // Create a Cloudinary instance and set your cloud name.
-  // const cld = new Cloudinary({
-  //   cloud: {
-  //     cloudName: "cordovez",
-  //   },
-  // });
-  const [loggedIn, setLoggedIn] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const userToken = localStorage.getItem("userToken");
-      if (userToken !== "null") {
-        setLoggedIn(true);
-        console.log("loggedIn: ", userToken);
-      } else {
-        setLoggedIn(false);
-        console.log(loggedIn);
-        // router.push("/me")
-      }
-    }
-  }, [loggedIn]);
-
   return (
     <ThemeProvider theme={theme}>
       <UserProvider>
         <Header />
-        <Component {...pageProps} />
+        <Container maxWidth="sm">
+          <Component {...pageProps} />
+        </Container>
       </UserProvider>
     </ThemeProvider>
   );

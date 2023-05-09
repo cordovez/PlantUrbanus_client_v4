@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AddPlant from "../Forms/add_plant_form";
+import RegisterForm from "../Forms/register_form";
 
 const style = {
   position: "absolute",
@@ -18,13 +19,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({
-  children,
-  label,
-  FormData,
-  data,
-  plant_id,
-}) {
+export default function RegisterModal({ label }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -39,13 +34,7 @@ export default function BasicModal({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {/* FormData is a misnomer: here it means just FormComponent */}
-          <FormData
-            setOpen={setOpen}
-            dbData={data}
-            plant_id={plant_id}
-            handleClose={handleClose}
-          />
+          <RegisterForm setOpen={setOpen} />
         </Box>
       </Modal>
     </div>

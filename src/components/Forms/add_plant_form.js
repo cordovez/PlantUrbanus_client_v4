@@ -6,7 +6,6 @@ import { UserContext } from "@/context/user_context";
 export default function AddPlant({ setOpen }) {
   const [token] = useContext(UserContext);
   const [imageSelected, setImageSelected] = useState("");
-  const [isFilePicked, setIsFilePicked] = useState(false);
 
   const uploadImage = () => {
     const formData = new FormData();
