@@ -113,6 +113,9 @@ export default function Weather() {
   return (
     <Grid
       container
+      xs={12}
+      md={6}
+      justifyContent={"center"}
       sx={{
         width: "100%",
         border: `1px solid ${sky} `,
@@ -121,6 +124,7 @@ export default function Weather() {
         marginTop: "1rem",
         borderRadius: "12px",
         color: "gray",
+        bgcolor: "white",
       }}
     >
       <Grid sm={2}>

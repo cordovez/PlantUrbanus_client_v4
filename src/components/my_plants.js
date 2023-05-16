@@ -35,28 +35,34 @@ function MyPlants() {
   if (loading) return <p>Loading...</p>;
   if (!plantData) return <p>No plant data</p>;
   return (
-    <Grid container xs={12}>
-      <Grid container>
+    <Grid container justifyContent={"center"}>
+      <Grid xs={12}>
         <BasicModal label="Add Plant" FormData={AddPlant} />
       </Grid>
       <Grid>
         <ImageList
           sx={{ maxWidth: 500, height: 450 }}
-          cols={3}
+          // cols={3}
           // rowHeight={164}
         >
           {plantData.map((item) => (
-            <Link href={`/plant/${item._id}`} key={item._id} item={item}>
+            <Link
+              href={`/plant/${item._id}`}
+              key={item._id}
+              item={item}
+              style={{ color: "#333", textDecoration: "none" }}
+            >
               <ImageListItem>
                 <img
-                  src={`${item.images[0].uri}?w=164&h=164&fit=crop&auto=format`}
-                  srcSet={`${item.images[0].uri}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${item.images[0].uri}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item.images[0].uri}?w=248&fit=crop&auto=format&dpr=2 2x`}
                   alt={item.title}
                   loading="lazy"
                 />
               </ImageListItem>
               <ImageListItemBar
                 title={!item.common_name ? "No name given" : item.common_name}
+                textDecoration="none"
                 subtitle={
                   <em>
                     {!item.scientific_name
@@ -70,7 +76,7 @@ function MyPlants() {
           ))}
         </ImageList>
       </Grid>
-      <Grid>
+      <Grid xs={12}>
         <Weather />
       </Grid>
     </Grid>

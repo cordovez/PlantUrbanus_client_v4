@@ -27,7 +27,7 @@ export default function Me() {
     findUser();
   }, [token]);
   if (loading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  if (!data) return <p>Please log in</p>;
   return (
     <Grid container>
       <Grid xs={12}>

@@ -14,32 +14,55 @@ export default function Header() {
   const expiration = contextData[2];
   const router = useRouter();
 
-  const [logged, setLogged] = useState(false);
   const [hidden, setHidden] = useState("visible");
+  const [label, setLabel] = useState("Log out");
 
   useEffect(() => {
     setHidden("visible");
-
-    if (typeof window !== "undefined") {
-      const user = () => {
-        localStorage.getItem("userToken");
-      };
-      if (user !== "null") setHidden("visible");
-      else {
-        setHidden("hidden");
+    const isItVisible = () => {
+      if (typeof window !== "undefined") {
+        const user = () => {
+          localStorage.getItem("userToken");
+        };
+        if (user !== "null") setHidden("visible");
+        else {
+          setHidden("hidden");
+        }
       }
-    }
-  }, [hidden]);
+      console.log("is it visible: ", hidden);
+    };
+    const labelIs = () => {
+      if (typeof window !== "undefined") {
+        const user = () => {
+          localStorage.getItem("userToken");
+          console.log("user inside user: ", user);
+        };
+        if (token) setLabel("Log out");
+        else {
+          setLabel("Log in");
+        }
+      }
+
+      console.log("label is: ", label);
+    };
+
+    isItVisible();
+    labelIs();
+  }, [token]);
 
   function handleClick() {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("userToken", null);
-      localStorage.setItem("expiration", null);
-      setHidden("hidden");
-    }
+    if (!token) {
+      router.push("/");
+    } else {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("userToken", null);
+        localStorage.setItem("expiration", null);
+        setHidden("hidden");
+      }
 
-    router.push("/");
-    // router.reload("window.location.pathname");
+      router.push("/");
+      // router.reload("window.location.pathname");
+    }
   }
   return (
     <Grid
@@ -59,7 +82,7 @@ export default function Header() {
           onClick={handleClick}
           sx={{ visibility: `${hidden}` }}
         >
-          Log Out
+          {`${label}`}
         </Button>
       </Grid>
     </Grid>

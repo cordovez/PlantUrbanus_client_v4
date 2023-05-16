@@ -31,7 +31,7 @@ export default function LoginForm({ setRegister }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const now = new Date();
-    const tomorrow = now.getTime() + 30000;
+    const tomorrow = now.getTime() + 24 * 60 * 60 * 1000;
 
     const login_response = await post_login(data);
     // console.log(login_response);

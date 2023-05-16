@@ -36,17 +36,6 @@ export const UserProvider = (props) => {
     }
   }, [token, expiration]);
 
-  // useEffect(() => {
-  //   // if (initialRender.current) {
-  //   //   // initialRender.current = false;
-  //   //   return;
-  //   // }
-  //   if (typeof window !== "undefined") {
-  //     window.localStorage.setItem("expiration", expiration);
-  //     // window.localStorage.setItem("expiration", expiration);
-  //   }
-  // }, [expiration]);
-
   if (isLoading) {
     return <p>content is loading ...</p>;
   }
