@@ -2,6 +2,7 @@ import post_plant from "@/axios/post_plant";
 import { Button } from "@mui/material";
 import { useState, useContext } from "react";
 import { UserContext } from "@/context/user_context";
+import Grid from "@mui/material/Unstable_Grid2";
 
 export default function AddPlant({ setOpen }) {
   const [token] = useContext(UserContext);
@@ -17,20 +18,22 @@ export default function AddPlant({ setOpen }) {
   };
 
   return (
-    <>
-      <input
-        type="file"
-        name="file"
-        onChange={(e) => {
-          setImageSelected(e.target.files[0]);
-        }}
-      />
+    <Grid container justifyContent={"center"}>
+      <Grid>
+        <input
+          type="file"
+          name="file"
+          onChange={(e) => {
+            setImageSelected(e.target.files[0]);
+          }}
+        />
+      </Grid>
 
-      <div>
+      <Grid>
         <Button variant="contained" onClick={uploadImage}>
           Upload
         </Button>
-      </div>
-    </>
+      </Grid>
+    </Grid>
   );
 }

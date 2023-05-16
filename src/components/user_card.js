@@ -9,27 +9,33 @@ import { deepPurple } from "@mui/material/colors";
 
 function UserCard({ data }) {
   return (
-    <Grid container spacing={2}>
-      <Grid container xs={8}>
+    <Grid
+      container
+      justifyContent={"center"}
+      xs={12}
+      sx={{}}
+      marginBottom={"20px"}
+    >
+      <Grid
+        container
+        justifyContent={"flex-start"}
+        alignItems={"center"}
+        xs={12}
+      >
+        {data.avatar !== null ? (
+          <Avatar
+            src={data.avatar.uri}
+            alt={data.username}
+            sx={{ width: 80, height: 80, marginRight: "20px" }}
+          />
+        ) : (
+          <Avatar sx={{ bgcolor: deepPurple[500] }}>
+            {data.username[0].toUpperCase()}
+          </Avatar>
+        )}
         <Grid>
-          {data.avatar !== null ? (
-            <Avatar
-              src={data.avatar.uri}
-              alt={data.username}
-              sx={{ width: 80, height: 80 }}
-            />
-          ) : (
-            <Avatar sx={{ bgcolor: deepPurple[500] }}>
-              {data.username[0].toUpperCase()}
-            </Avatar>
-          )}
+          <Typography variant="h3">{data.username}</Typography>
         </Grid>
-        <Grid>
-          <Typography variant="h2">{data.username}</Typography>
-        </Grid>
-      </Grid>
-      <Grid>
-        <BasicModal label="Add Plant" FormData={AddPlant} />
       </Grid>
     </Grid>
   );

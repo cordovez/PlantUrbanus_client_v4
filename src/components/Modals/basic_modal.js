@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AddPlant from "../Forms/add_plant_form";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 
 const style = {
   position: "absolute",
@@ -31,7 +32,9 @@ export default function BasicModal({
 
   return (
     <div>
-      <Button onClick={handleOpen}>{label}</Button>
+      <Button onClick={handleOpen} startIcon={<AddAPhotoIcon />}>
+        {label}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

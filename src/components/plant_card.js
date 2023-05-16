@@ -3,15 +3,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import DeleteButton from "./globals/DeleteButton";
 import delete_plant from "@/axios/delete_plant";
 
 function PlantCard({ plant, id, token }) {
   const deleteFunction = delete_plant;
+
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardActionArea>
           <CardMedia
             component="img"

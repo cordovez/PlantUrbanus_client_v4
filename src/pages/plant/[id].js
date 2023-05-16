@@ -1,4 +1,4 @@
-import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 
 import axios from "@/axios";
@@ -41,18 +41,31 @@ export default function Plant() {
   }
 
   return (
-    <>
-      <Typography variant="overline" display="block" gutterBottom>
-        <Link href="/me">Back to my plants</Link>
-      </Typography>
-      <Grid2 container>
-        <Grid2 xs={12} sm={6}>
+    <Grid container sx={{ bgcolor: "blue" }} xs={12}>
+      <Grid xs={12} sx={{ bgcolor: "pink" }}>
+        <Typography variant="overline" display="block" gutterBottom>
+          <Link href="/me">Back to my plants</Link>
+        </Typography>
+      </Grid>
+      <Grid container>
+        <Grid md={6}>
           <PlantCard plant={plantData} id={plant_id} token={token} />
-        </Grid2>
-        <Grid2 xs={12} sm={6}>
+        </Grid>
+        <Grid md={6}>
           <PlantFactSheet plant={plantData} plant_id={plant_id} />
-        </Grid2>
-      </Grid2>
-    </>
+        </Grid>
+      </Grid>
+    </Grid>
   );
+}
+{
+  /* 
+      <Grid container>
+        <Grid sm={6}>
+          <PlantCard plant={plantData} id={plant_id} token={token} />
+        </Grid>
+        <Grid xs={12} sm={6}>
+          <PlantFactSheet plant={plantData} plant_id={plant_id} />
+        </Grid>
+      </Grid> */
 }

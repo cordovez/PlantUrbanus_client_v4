@@ -2,7 +2,11 @@ import axios from ".";
 
 export async function get_me(token) {
   const tokenInfo = { headers: { Authorization: "Bearer " + token } };
-  return await axios.get("/users/me", tokenInfo).catch(function (error) {
+
+  try {
+    return await axios.get("/users/me", tokenInfo);
+    expiry();
+  } catch (error) {
     if (error.response) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
@@ -19,5 +23,5 @@ export async function get_me(token) {
       console.log("Error", error.message);
     }
     console.log(error.config);
-  });
+  }
 }

@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
@@ -20,8 +20,8 @@ function PlantFactSheet({ plant, plant_id }) {
   //   console.log(plant);
   return (
     <>
-      <Grid2 container>
-        <Grid2 xs={12}>
+      <Grid container>
+        <Grid>
           <Paper
             square={true}
             elevation={2}
@@ -59,8 +59,8 @@ function PlantFactSheet({ plant, plant_id }) {
               plant_id={plant_id}
             />
           </Paper>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
     </>
   );
 }

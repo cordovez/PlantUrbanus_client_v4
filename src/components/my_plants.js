@@ -7,6 +7,12 @@ import { get_me_plants } from "@/axios/get_me_plants";
 
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import BasicModal from "./Modals/basic_modal";
+import AddPlant from "./Forms/add_plant_form";
+import Weather from "./weather";
 
 function MyPlants() {
   const contextData = useContext(UserContext);
@@ -29,22 +35,45 @@ function MyPlants() {
   if (loading) return <p>Loading...</p>;
   if (!plantData) return <p>No plant data</p>;
   return (
-    <>
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-        {plantData.map((item) => (
-          <Link href={`/plant/${item._id}`} key={item._id} item={item}>
-            <ImageListItem>
-              <img
-                src={`${item.images[0].uri}?w=164&h=164&fit=crop&auto=format`}
-                srcSet={`${item.images[0].uri}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
+    <Grid container xs={12}>
+      <Grid container>
+        <BasicModal label="Add Plant" FormData={AddPlant} />
+      </Grid>
+      <Grid>
+        <ImageList
+          sx={{ maxWidth: 500, height: 450 }}
+          cols={3}
+          // rowHeight={164}
+        >
+          {plantData.map((item) => (
+            <Link href={`/plant/${item._id}`} key={item._id} item={item}>
+              <ImageListItem>
+                <img
+                  src={`${item.images[0].uri}?w=164&h=164&fit=crop&auto=format`}
+                  srcSet={`${item.images[0].uri}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              </ImageListItem>
+              <ImageListItemBar
+                title={!item.common_name ? "No name given" : item.common_name}
+                subtitle={
+                  <em>
+                    {!item.scientific_name
+                      ? "scientific name"
+                      : item.scientific_name}
+                  </em>
+                }
+                position="below"
               />
-            </ImageListItem>
-          </Link>
-        ))}
-      </ImageList>
-    </>
+            </Link>
+          ))}
+        </ImageList>
+      </Grid>
+      <Grid>
+        <Weather />
+      </Grid>
+    </Grid>
   );
 }
 export default MyPlants;

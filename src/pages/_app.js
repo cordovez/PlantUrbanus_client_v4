@@ -1,4 +1,4 @@
-// import '@/styles/globals.css'
+// import "@/styles/globals.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -12,10 +12,9 @@ import { createTheme, colors, ThemeProvider } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 
-import { useEffect, useState } from "react";
-
 import { UserProvider } from "@/context/user_context";
 import Header from "@/components/globals/Header";
+import Footer from "@/components/globals/Footer";
 
 const theme = createTheme({
   typography: {
@@ -26,10 +25,22 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <UserProvider>
-        <Header />
-        <Container maxWidth="sm">
-          <Component {...pageProps} />
-        </Container>
+        <CssBaseline>
+          <Header />
+          <Container
+            sx={{
+              height: "100vh",
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+              // alignItems: "center",
+            }}
+            maxWidth={"xl"}
+          >
+            <Component {...pageProps} />
+          </Container>
+          <Footer />
+        </CssBaseline>
       </UserProvider>
     </ThemeProvider>
   );
