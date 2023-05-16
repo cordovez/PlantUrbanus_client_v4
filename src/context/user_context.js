@@ -2,7 +2,6 @@
 
 import { createContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import set_expiration from "@/utils/set_expiration";
 import confirm_expiration from "@/utils/confirm_expiration";
 
 export const UserContext = createContext(null);
@@ -21,7 +20,6 @@ export const UserProvider = (props) => {
       router.push("/");
     } else {
       setIsLoading(false);
-      // confirm_expiration(expiration);
     }
   }, [token, router]);
 

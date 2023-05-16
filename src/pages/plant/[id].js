@@ -41,17 +41,17 @@ export default function Plant() {
   }
 
   return (
-    <Grid container sx={{ bgcolor: "blue" }} xs={12}>
-      <Grid xs={12} sx={{ bgcolor: "pink" }}>
+    <Grid container flexDirection={"column"}>
+      <Grid xs={12}>
         <Typography variant="overline" display="block" gutterBottom>
           <Link href="/me">Back to my plants</Link>
         </Typography>
       </Grid>
       <Grid container>
-        <Grid md={6}>
+        <Grid sm={6}>
           <PlantCard plant={plantData} id={plant_id} token={token} />
         </Grid>
-        <Grid md={6}>
+        <Grid sm={6}>
           <PlantFactSheet plant={plantData} plant_id={plant_id} />
         </Grid>
       </Grid>

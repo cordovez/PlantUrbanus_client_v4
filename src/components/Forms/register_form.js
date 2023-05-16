@@ -61,16 +61,14 @@ export default function RegisterForm({ setOpen, setRegister }) {
     <Grid
       container
       sx={{
-        marginTop: "5vh",
         backgroundColor: "#fff",
         zIndex: 1,
         borderRadius: "12px",
-        alignSelf: "start",
       }}
-      padding={2}
+      padding={1}
     >
       <form onSubmit={handleSubmit}>
-        <Grid container flexDirection={"column"} spacing={-2}>
+        <Grid container flexDirection={"column"} spacing={-1}>
           <TextField
             required
             variant="outlined"
@@ -79,7 +77,7 @@ export default function RegisterForm({ setOpen, setRegister }) {
             name="username"
             defaultValue={data.username}
             onChange={handleChange}
-            sx={{ paddingBottom: "2rem" }}
+            sx={{ paddingBottom: "1rem" }}
           />
 
           <TextField
@@ -90,7 +88,7 @@ export default function RegisterForm({ setOpen, setRegister }) {
             name="email"
             defaultValue={data.email}
             onChange={handleChange}
-            sx={{ paddingBottom: "2rem" }}
+            sx={{ paddingBottom: "1rem" }}
           />
 
           <TextField
@@ -101,7 +99,7 @@ export default function RegisterForm({ setOpen, setRegister }) {
             name="password"
             defaultValue={data.password}
             onChange={handleChange}
-            sx={{ paddingBottom: "2rem" }}
+            sx={{ paddingBottom: "1rem" }}
           />
 
           <TextField
@@ -112,7 +110,7 @@ export default function RegisterForm({ setOpen, setRegister }) {
             name="password2"
             defaultValue={data.password}
             onChange={handleCompare}
-            sx={{ paddingBottom: "2rem" }}
+            sx={{ paddingBottom: "1rem" }}
           />
         </Grid>
         {alert ? (
@@ -123,7 +121,7 @@ export default function RegisterForm({ setOpen, setRegister }) {
         ) : (
           <></>
         )}
-        <Grid container justifyContent={"flex-end"} spacing={-2}>
+        <Grid container justifyContent={"flex-end"} spacing={-1}>
           <Grid>
             <Button type="submit" variant="contained" disabled={isDisabled}>
               Register

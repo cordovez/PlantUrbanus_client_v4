@@ -67,25 +67,27 @@ export default function Header() {
   return (
     <Grid
       container
-      xs={12}
       justifyContent={"space-between"}
+      position={"relative"}
       sx={{
         bgcolor: "white",
-        borderBottom: "1px solid #999 ",
+        borderBottom: "1px solid #ededed ",
         padding: "20px",
       }}
     >
       <Grid>
         <Image src={PlantUrbanusLogo} alt="PlantUrbanus" height={50} priority />
       </Grid>
-      <Grid>
-        <Button
-          variant="contained"
-          onClick={handleClick}
-          sx={{ visibility: `${hidden}` }}
-        >
-          {`${label}`}
-        </Button>
+      <Grid container alignContent={"center"}>
+        <Grid>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            sx={{ visibility: `${hidden}` }}
+          >
+            {`${label}`}
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   );

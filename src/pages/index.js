@@ -10,6 +10,7 @@ import RegisterForm from "@/components/Forms/register_form";
 
 import Image from "next/image";
 import backgroundImage from "../../public/teemu-paananen-OOE4xAnBhKo-unsplash2.jpg";
+import PlantUrbanusLogo from "../../public/PlantUrbanusLogo_white.svg";
 
 export default function Home() {
   const [register, setRegister] = useState(false);
@@ -22,7 +23,14 @@ export default function Home() {
         style={{ objectFit: "cover" }}
         priority
       />
-      <Grid container>
+      <Grid container justifyContent={"center"}>
+        <Image
+          style={{ position: "relative" }}
+          src={PlantUrbanusLogo}
+          alt="PlantUrbanus"
+          height={100}
+          priority
+        />
         {!register ? (
           <LoginForm setRegister={setRegister} />
         ) : (

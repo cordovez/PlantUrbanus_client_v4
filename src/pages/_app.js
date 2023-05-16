@@ -31,10 +31,10 @@ export default function App({ Component, pageProps }) {
             sx={{
               display: "flex",
               flexDirection: "column",
-              height: "100vh",
-              position: "relative",
-              justifyContent: "center",
-              alignItems: "center",
+              // justifyContent: "center",
+              // alignItems: "center",
+              bgcolor: "#f9f9f9",
+              disableGutters: true,
             }}
             maxWidth={"sm"}
           >

@@ -41,11 +41,10 @@ export default function LoginForm({ setRegister }) {
     <Grid
       container
       sx={{
-        marginTop: "5vh",
+        // marginTop: "10vh",
         bgcolor: "#fff",
         zIndex: 1,
         borderRadius: "12px",
-        alignSelf: "start",
       }}
       padding={2}
     >

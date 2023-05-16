@@ -15,6 +15,7 @@ function UserCard({ data }) {
       xs={12}
       sx={{}}
       marginBottom={"20px"}
+      marginTop={"20px"}
     >
       <Grid
         container

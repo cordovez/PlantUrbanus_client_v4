@@ -20,47 +20,43 @@ function PlantFactSheet({ plant, plant_id }) {
   //   console.log(plant);
   return (
     <>
-      <Grid container>
-        <Grid>
-          <Paper
-            square={true}
-            elevation={2}
-            sx={{ margin: "1rem", padding: "1rem" }}
-          >
-            <Typography sx={lineStyles} variant="body2">
-              <span style={{ fontWeight: "bold" }}>Date of purchase: </span>
-              <span> {plant.date_of_purchase}</span>
-            </Typography>
-            <Typography sx={lineStyles} variant="body2">
-              <span style={{ fontWeight: "bold" }}>Price paid: </span>
-              <span> {plant.price_paid}</span>
-            </Typography>
-            <Typography sx={lineStyles} variant="body2">
-              <span style={{ fontWeight: "bold" }}>Purchased at: </span>
-              <span> {plant.purchased_at}</span>
-            </Typography>
-            <Typography sx={lineStyles} variant="body2">
-              <span style={{ fontWeight: "bold" }}>Substrate: </span>
-              <span> {plant.substrate}</span>
-            </Typography>
-            <Typography sx={lineStyles} variant="body2">
-              <span style={{ fontWeight: "bold" }}>Fertiliser: </span>
-              <span> {plant.nutrients}</span>
-            </Typography>
-            <Typography sx={lineStyles} variant="body2">
-              <span style={{ fontWeight: "bold" }}>Pesticides: </span>
-              <span> € {plant.pest_treatment}</span>
-            </Typography>
+      {/* <Grid container> */}
+      <Grid>
+        <Paper square={true} elevation={2} sx={{ padding: "1rem" }}>
+          <Typography sx={lineStyles} variant="body2">
+            <span style={{ fontWeight: "bold" }}>Date of purchase: </span>
+            <span> {plant.date_of_purchase}</span>
+          </Typography>
+          <Typography sx={lineStyles} variant="body2">
+            <span style={{ fontWeight: "bold" }}>Price paid: </span>
+            <span> {plant.price_paid}</span>
+          </Typography>
+          <Typography sx={lineStyles} variant="body2">
+            <span style={{ fontWeight: "bold" }}>Purchased at: </span>
+            <span> {plant.purchased_at}</span>
+          </Typography>
+          <Typography sx={lineStyles} variant="body2">
+            <span style={{ fontWeight: "bold" }}>Substrate: </span>
+            <span> {plant.substrate}</span>
+          </Typography>
+          <Typography sx={lineStyles} variant="body2">
+            <span style={{ fontWeight: "bold" }}>Fertiliser: </span>
+            <span> {plant.nutrients}</span>
+          </Typography>
+          <Typography sx={lineStyles} variant="body2">
+            <span style={{ fontWeight: "bold" }}>Pesticides: </span>
+            <span> € {plant.pest_treatment}</span>
+          </Typography>
 
-            <BasicModal
-              label="Edit"
-              FormData={UpdatePlant}
-              data={plant}
-              plant_id={plant_id}
-            />
-          </Paper>
-        </Grid>
+          <BasicModal
+            label="Edit"
+            FormData={UpdatePlant}
+            data={plant}
+            plant_id={plant_id}
+          />
+        </Paper>
       </Grid>
+      {/* </Grid> */}
     </>
   );
 }
