@@ -8,11 +8,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 
-import axios from "@/axios";
-
 import { UserContext } from "@/context/user_context";
 import post_login from "@/axios/post_login";
-import set_expiration from "@/utils/set_expiration";
 
 export default function LoginForm({ setRegister }) {
   const router = useRouter();
@@ -31,8 +28,8 @@ export default function LoginForm({ setRegister }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const now = new Date();
-    const tomorrow = now.getTime() + 24 * 60 * 60 * 1000;
-
+    const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    console.log("tomorrow: ", tomorrow);
     const login_response = await post_login(data);
     // console.log(login_response);
     setToken(login_response);
@@ -45,7 +42,7 @@ export default function LoginForm({ setRegister }) {
       container
       sx={{
         marginTop: "5vh",
-        backgroundColor: "#fff",
+        bgcolor: "#fff",
         zIndex: 1,
         borderRadius: "12px",
         alignSelf: "start",

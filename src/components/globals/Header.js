@@ -67,9 +67,11 @@ export default function Header() {
   return (
     <Grid
       container
+      xs={12}
       justifyContent={"space-between"}
       sx={{
         bgcolor: "white",
+        borderBottom: "1px solid #999 ",
         padding: "20px",
       }}
     >

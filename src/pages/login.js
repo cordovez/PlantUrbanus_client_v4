@@ -1,4 +1,3 @@
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
 // import { UserContext } from "@/context/user_context";
@@ -8,15 +7,13 @@ import BasicModal from "@/components/Modals/basic_modal";
 
 export default function Login() {
   return (
-    <Container maxWidth="sm">
-      <Grid container>
-        <Grid item xs={12} paddingBottom={"5rem"}>
-          <LoginForm />
-        </Grid>{" "}
-        <Grid item>
-          <BasicModal label="Register" FormData={RegisterForm} />
-        </Grid>
+    <Grid container>
+      <Grid item xs={12} paddingBottom={"5rem"}>
+        <LoginForm />
       </Grid>
-    </Container>
+      <Grid item>
+        <BasicModal label="Register" FormData={RegisterForm} />
+      </Grid>
+    </Grid>
   );
 }

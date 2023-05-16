@@ -21,9 +21,9 @@ export const UserProvider = (props) => {
       router.push("/");
     } else {
       setIsLoading(false);
-      confirm_expiration(expiration);
+      // confirm_expiration(expiration);
     }
-  }, [token, router, expiration]);
+  }, [token, router]);
 
   useEffect(() => {
     if (initialRender.current) {
@@ -39,7 +39,7 @@ export const UserProvider = (props) => {
   if (isLoading) {
     return <p>content is loading ...</p>;
   }
-  console.log("user context: ", UserContext);
+  // console.log("user context: ", UserContext);
   return (
     <UserContext.Provider value={[token, setToken, expiration, setExpiration]}>
       {props.children}

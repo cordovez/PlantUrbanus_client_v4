@@ -22,11 +22,13 @@ export default function Home() {
         style={{ objectFit: "cover" }}
         priority
       />
-      {!register ? (
-        <LoginForm setRegister={setRegister} />
-      ) : (
-        <RegisterForm setRegister={setRegister} />
-      )}
+      <Grid container>
+        {!register ? (
+          <LoginForm setRegister={setRegister} />
+        ) : (
+          <RegisterForm setRegister={setRegister} />
+        )}
+      </Grid>
     </>
   );
 }

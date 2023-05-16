@@ -29,13 +29,9 @@ export default function Me() {
   if (loading) return <p>Loading...</p>;
   if (!data) return <p>Please log in</p>;
   return (
-    <Grid container>
-      <Grid xs={12}>
-        <UserCard data={data} />
-      </Grid>
-      <Grid xs={12}>
-        <MyPlants />
-      </Grid>
-    </Grid>
+    <>
+      <UserCard data={data} />
+      <MyPlants />
+    </>
   );
 }

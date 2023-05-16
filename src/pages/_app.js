@@ -29,13 +29,14 @@ export default function App({ Component, pageProps }) {
           <Header />
           <Container
             sx={{
+              display: "flex",
+              flexDirection: "column",
               height: "100vh",
               position: "relative",
-              display: "flex",
               justifyContent: "center",
-              // alignItems: "center",
+              alignItems: "center",
             }}
-            maxWidth={"xl"}
+            maxWidth={"sm"}
           >
             <Component {...pageProps} />
           </Container>
