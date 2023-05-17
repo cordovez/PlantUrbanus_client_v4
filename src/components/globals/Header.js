@@ -11,7 +11,6 @@ import PlantUrbanusLogo from "../../../public/PlantUrbanusLogo.svg";
 export default function Header() {
   const contextData = useContext(UserContext);
   const token = contextData[0];
-  const expiration = contextData[2];
   const router = useRouter();
 
   const [hidden, setHidden] = useState("visible");
@@ -29,26 +28,22 @@ export default function Header() {
           setHidden("hidden");
         }
       }
-      console.log("is it visible: ", hidden);
     };
     const labelIs = () => {
       if (typeof window !== "undefined") {
         const user = () => {
           localStorage.getItem("userToken");
-          console.log("user inside user: ", user);
         };
         if (token) setLabel("Log out");
         else {
           setLabel("Log in");
         }
       }
-
-      console.log("label is: ", label);
     };
 
     isItVisible();
     labelIs();
-  }, [token]);
+  }, [token, hidden]);
 
   function handleClick() {
     if (!token) {
@@ -68,7 +63,7 @@ export default function Header() {
     <Grid
       container
       justifyContent={"space-between"}
-      position={"relative"}
+      // position={"absolute"}
       sx={{
         bgcolor: "white",
         borderBottom: "1px solid #ededed ",

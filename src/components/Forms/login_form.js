@@ -18,7 +18,7 @@ export default function LoginForm({ setRegister }) {
   const [data, setData] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
     setData({
       ...data,
       [e.target.name]: value,

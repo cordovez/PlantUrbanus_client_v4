@@ -14,7 +14,7 @@ function UserCard({ data }) {
       justifyContent={"center"}
       xs={12}
       sx={{}}
-      marginBottom={"20px"}
+      // marginBottom={"10px"}
       marginTop={"20px"}
     >
       <Grid

@@ -5,12 +5,15 @@ export default function Footer() {
   return (
     <Grid
       container
+      justifyContent={"space-between"}
       sx={{
         padding: "6px",
         bgcolor: "#005404",
-        color: "#999",
+        color: "#fff",
+        position: "relative",
+        bottom: 0,
+        width: "100vw",
       }}
-      justifyContent={"space-between"}
     >
       <Grid>
         <Typography variant="caption">

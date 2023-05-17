@@ -7,6 +7,7 @@ import { UserContext } from "@/context/user_context";
 import Grid from "@mui/material/Unstable_Grid2";
 
 import { get_me } from "@/axios/get_me";
+import NoPlants from "@/components/no_plants";
 
 export default function Me() {
   const contextData = useContext(UserContext);
@@ -29,9 +30,17 @@ export default function Me() {
   if (loading) return <p>Loading...</p>;
   if (!data) return <p>Please log in</p>;
   return (
-    <>
-      <UserCard data={data} />
-      <MyPlants />
-    </>
+    <Grid
+      container
+      maxWidth={600}
+      justifyContent={"center"}
+      alignSelf={"center"}
+      // height={"100%"}
+    >
+      <Grid xs={12} marginBottom={"10px"}>
+        <UserCard data={data} />
+      </Grid>
+      <Grid>{data.plants.length === 0 ? <NoPlants /> : <MyPlants />}</Grid>
+    </Grid>
   );
 }

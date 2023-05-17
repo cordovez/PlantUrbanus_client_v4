@@ -23,7 +23,7 @@ export default function Home() {
         style={{ objectFit: "cover" }}
         priority
       />
-      <Grid container justifyContent={"center"}>
+      <Grid container alignContent={"center"} flexDirection={"column"}>
         <Image
           style={{ position: "relative" }}
           src={PlantUrbanusLogo}

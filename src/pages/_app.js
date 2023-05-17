@@ -35,8 +35,11 @@ export default function App({ Component, pageProps }) {
               // alignItems: "center",
               bgcolor: "#f9f9f9",
               disableGutters: true,
+              height: "100vh",
+              position: "fixed",
+              zIndex: 999,
             }}
-            maxWidth={"sm"}
+            maxWidth={"xl"}
           >
             <Component {...pageProps} />
           </Container>

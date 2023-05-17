@@ -8,13 +8,15 @@ import { get_me_plants } from "@/axios/get_me_plants";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import Box from "@mui/material/Box";
 
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import BasicModal from "./Modals/basic_modal";
 import AddPlant from "./Forms/add_plant_form";
 import Weather from "./weather";
+import { Typography } from "@mui/material";
 
-function MyPlants() {
+function NoPlants() {
   const contextData = useContext(UserContext);
   const token = contextData[0];
   const [plantData, setPlantData] = useState(null);
@@ -39,43 +41,22 @@ function MyPlants() {
       <Grid xs={12}>
         <BasicModal label="Add Plant" FormData={AddPlant} />
       </Grid>
-      <Grid>
-        <ImageList sx={{ maxWidth: 600, height: "100%" }} cols={3}>
-          {plantData.map((item) => (
-            <Link
-              href={`/plant/${item._id}`}
-              key={item._id}
-              item={item}
-              style={{ color: "#333", textDecoration: "none" }}
-            >
-              <ImageListItem>
-                <img
-                  src={`${item.images[0].uri}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.images[0].uri}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                />
-              </ImageListItem>
-              <ImageListItemBar
-                title={!item.common_name ? "No name given" : item.common_name}
-                textDecoration="none"
-                subtitle={
-                  <em>
-                    {!item.scientific_name
-                      ? "scientific name"
-                      : item.scientific_name}
-                  </em>
-                }
-                position="below"
-              />
-            </Link>
-          ))}
-        </ImageList>
-      </Grid>
+      <Box
+        maxWidth={"500px"}
+        maxHeight={"500px"}
+        bgcolor={"#ededed"}
+        borderRadius={"8px"}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        padding={"100px"}
+      >
+        <Typography variant="body1">You have no plants yet 😭</Typography>
+      </Box>
       <Grid xs={12}>
         <Weather />
       </Grid>
     </Grid>
   );
 }
-export default MyPlants;
+export default NoPlants;

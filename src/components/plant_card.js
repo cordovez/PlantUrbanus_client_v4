@@ -13,13 +13,13 @@ function PlantCard({ plant, id, token }) {
 
   return (
     <>
-      <Card>
+      <Card sx={{ maxWidth: "350px" }}>
         <CardActionArea>
           <CardMedia
             component="img"
             height="100%"
             image={`${plant.images[0].uri}`}
-            alt="green iguana"
+            alt={`${plant.images[0].common_name}`}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">

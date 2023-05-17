@@ -51,7 +51,7 @@ export default function Plant() {
         <Grid sm={6}>
           <PlantCard plant={plantData} id={plant_id} token={token} />
         </Grid>
-        <Grid sm={6}>
+        <Grid sm={6} xs={12}>
           <PlantFactSheet plant={plantData} plant_id={plant_id} />
         </Grid>
       </Grid>
