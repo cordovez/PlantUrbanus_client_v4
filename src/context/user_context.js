@@ -1,8 +1,5 @@
-// "use client";
-
 import { createContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import confirm_expiration from "@/utils/confirm_expiration";
 
 export const UserContext = createContext(null);
 
@@ -10,7 +7,11 @@ export const UserProvider = (props) => {
   const initialRender = useRef(true);
 
   const router = useRouter();
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("userToken")
+      : null
+  );
   const [expiration, setExpiration] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,6 +29,7 @@ export const UserProvider = (props) => {
       initialRender.current = false;
       return;
     }
+    console.log("render", initialRender);
     if (typeof window !== "undefined") {
       window.localStorage.setItem("userToken", token);
       window.localStorage.setItem("expiration", expiration);
