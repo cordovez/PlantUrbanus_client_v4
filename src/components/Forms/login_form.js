@@ -29,12 +29,15 @@ export default function LoginForm({ setRegister }) {
     e.preventDefault();
     const now = new Date();
     const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-    console.log("tomorrow: ", tomorrow);
+
     const login_response = await post_login(data);
-    // console.log(login_response);
-    setToken(login_response);
-    setExpiration(tomorrow);
-    router.push("/me");
+    if (login_response) {
+      setToken(login_response);
+      setExpiration(tomorrow);
+      router.push("/user/dashboard");
+    } else {
+      alert("login was unsuccessful. Please try again or register.");
+    }
   };
 
   return (

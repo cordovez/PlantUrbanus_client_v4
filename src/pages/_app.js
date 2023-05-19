@@ -4,7 +4,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 import { Cloudinary } from "@cloudinary/url-gen";
 
@@ -15,6 +15,8 @@ import Container from "@mui/material/Container";
 import { UserProvider } from "@/context/user_context";
 import Header from "@/components/globals/Header";
 import Footer from "@/components/globals/Footer";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const theme = createTheme({
   typography: {
@@ -26,24 +28,13 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <UserProvider>
         <CssBaseline>
-          <Header />
-          <Container
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              // justifyContent: "center",
-              // alignItems: "center",
-              bgcolor: "#f9f9f9",
-              disableGutters: true,
-              height: "100vh",
-              position: "fixed",
-              zIndex: 999,
-            }}
-            maxWidth={"xl"}
-          >
+          {Component.PageLayout ? (
+            <Component.PageLayout>
+              <Component {...pageProps} />
+            </Component.PageLayout>
+          ) : (
             <Component {...pageProps} />
-          </Container>
-          <Footer />
+          )}
         </CssBaseline>
       </UserProvider>
     </ThemeProvider>

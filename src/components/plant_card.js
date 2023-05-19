@@ -5,19 +5,19 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
+import Tooltip from "@mui/material/Tooltip";
+
 import DeleteButton from "./globals/DeleteButton";
 import delete_plant from "@/axios/delete_plant";
 
 function PlantCard({ plant, id, token }) {
-  const deleteFunction = delete_plant;
-
   return (
     <>
-      <Card sx={{ maxWidth: "350px" }}>
+      <Card>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="100%"
+            // maxHeight="100%"
             image={`${plant.images[0].uri}`}
             alt={`${plant.images[0].common_name}`}
           />
@@ -39,11 +39,16 @@ function PlantCard({ plant, id, token }) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <DeleteButton id={id} token={token} deleteFunction={deleteFunction} />
+        <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Tooltip title="not yet activated" arrow>
+            <Button size="small" color="primary">
+              Share
+            </Button>
+          </Tooltip>
+
+          <Tooltip title="Beware, one click and it's gone" arrow>
+            <DeleteButton id={id} token={token} />
+          </Tooltip>
         </CardActions>
       </Card>
     </>

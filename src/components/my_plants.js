@@ -13,6 +13,7 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import BasicModal from "./Modals/basic_modal";
 import AddPlant from "./Forms/add_plant_form";
 import Weather from "./weather";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 
 function MyPlants() {
   const contextData = useContext(UserContext);
@@ -37,10 +38,14 @@ function MyPlants() {
   return (
     <Grid container justifyContent={"center"}>
       <Grid xs={12}>
-        <BasicModal label="Add Plant" FormData={AddPlant} />
+        <BasicModal
+          label="Add Plant"
+          ModalBody={AddPlant}
+          Icon={<AddAPhotoIcon />}
+        />
       </Grid>
       <Grid>
-        <ImageList sx={{ maxWidth: 600, height: "100%" }} cols={3}>
+        <ImageList sx={{ maxWidth: 600, height: "100%" }}>
           {plantData.map((item) => (
             <Link
               href={`/plant/${item._id}`}

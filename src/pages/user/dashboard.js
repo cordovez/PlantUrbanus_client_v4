@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import RootLayout from "../layout";
 
 import MyPlants from "@/components/my_plants";
 import UserCard from "@/components/user_card";
@@ -9,7 +10,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { get_me } from "@/axios/get_me";
 import NoPlants from "@/components/no_plants";
 
-export default function Me() {
+export default function Dashboard() {
   const contextData = useContext(UserContext);
   const token = contextData[0];
 
@@ -35,6 +36,7 @@ export default function Me() {
       maxWidth={600}
       justifyContent={"center"}
       alignSelf={"center"}
+      margin={"0 auto"}
       // height={"100%"}
     >
       <Grid xs={12} marginBottom={"10px"}>
@@ -44,3 +46,4 @@ export default function Me() {
     </Grid>
   );
 }
+Dashboard.PageLayout = RootLayout;

@@ -1,5 +1,6 @@
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 import axios from "@/axios";
 import { useRouter } from "next/router";
@@ -8,6 +9,7 @@ import Link from "next/link";
 import { UserContext } from "@/context/user_context";
 import { useContext, useEffect, useState } from "react";
 
+import RootLayout from "../layout";
 import { get_plant } from "@/axios/get_plant";
 import PlantCard from "@/components/plant_card";
 import PlantFactSheet from "@/components/fact_sheet";
@@ -41,31 +43,39 @@ export default function Plant() {
   }
 
   return (
-    <Grid container flexDirection={"column"}>
+    <Grid
+      container
+      flexDirection={"column"}
+      alignSelf={"center"}
+      height={"1000px"}
+      padding={"0 10px"}
+      marginTop={"10px"}
+    >
       <Grid xs={12}>
         <Typography variant="overline" display="block" gutterBottom>
-          <Link href="/me">Back to my plants</Link>
+          <Link href="/user/dashboard">
+            <Button variant="outlined" sx={{ bgcolor: "white" }}>
+              Back to dashboard
+            </Button>
+          </Link>
         </Typography>
       </Grid>
-      <Grid container>
-        <Grid sm={6}>
+
+      <Grid
+        container
+        justifyContent={"flex-start"}
+        // height={"100vh"}
+        marginBottom={"50px"}
+      >
+        <Grid sm={4} xs={12}>
           <PlantCard plant={plantData} id={plant_id} token={token} />
         </Grid>
-        <Grid sm={6} xs={12}>
+
+        <Grid sm={8} xs={12} marginTop={"2px"}>
           <PlantFactSheet plant={plantData} plant_id={plant_id} />
         </Grid>
       </Grid>
     </Grid>
   );
 }
-{
-  /* 
-      <Grid container>
-        <Grid sm={6}>
-          <PlantCard plant={plantData} id={plant_id} token={token} />
-        </Grid>
-        <Grid xs={12} sm={6}>
-          <PlantFactSheet plant={plantData} plant_id={plant_id} />
-        </Grid>
-      </Grid> */
-}
+Plant.PageLayout = RootLayout;

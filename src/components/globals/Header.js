@@ -68,6 +68,7 @@ export default function Header() {
         bgcolor: "white",
         borderBottom: "1px solid #ededed ",
         padding: "20px",
+        marginBottom: "20px",
       }}
     >
       <Grid>

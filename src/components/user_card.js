@@ -6,6 +6,8 @@ import BasicModal from "./Modals/basic_modal";
 import RegisterForm from "./Forms/register_form";
 import AddPlant from "./Forms/add_plant_form";
 import { deepPurple } from "@mui/material/colors";
+import MainAvatar from "./globals/MainAvatar";
+import Link from "next/link";
 
 function UserCard({ data }) {
   return (
@@ -23,20 +25,12 @@ function UserCard({ data }) {
         alignItems={"center"}
         xs={12}
       >
-        {data.avatar !== null ? (
-          <Avatar
-            src={data.avatar.uri}
-            alt={data.username}
-            sx={{ width: 80, height: 80, marginRight: "20px" }}
-          />
-        ) : (
-          <Avatar sx={{ bgcolor: deepPurple[500] }}>
-            {data.username[0].toUpperCase()}
-          </Avatar>
-        )}
-        <Grid>
-          <Typography variant="h3">{data.username}</Typography>
-        </Grid>
+        <Link href="/user/me">
+          <MainAvatar data={data} />
+        </Link>
+        <Typography variant="h3" marginLeft={"20px"}>
+          {data.username}
+        </Typography>
       </Grid>
     </Grid>
   );

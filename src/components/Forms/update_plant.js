@@ -4,6 +4,8 @@ import { UserContext } from "@/context/user_context";
 import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import update_plant_axios from "@/axios/update_plant_axios";
 
@@ -43,6 +45,7 @@ export default function UpdatePlant({ dbData, plant_id, handleClose }) {
       purchased_at: data.purchased_at,
       price_paid: data.price_paid,
     };
+
     const updateData = compareInputs(newInputs, dbData);
     // console.log("newIputs: ", newInputs);
     // console.log("updatedData: ", updateData);
@@ -144,9 +147,14 @@ export default function UpdatePlant({ dbData, plant_id, handleClose }) {
         sx={{ paddingBottom: "1rem" }}
       />
 
-      <Button variant="contained" type="submit" sx={{ marginTop: "10px" }}>
-        Submit
-      </Button>
+      <Grid container justifyContent={"space-between"}>
+        <Button variant="contained" type="submit" sx={{ marginTop: "10px" }}>
+          Submit
+        </Button>
+        <Button endIcon={<CloseIcon />} onClick={handleClose}>
+          close
+        </Button>
+      </Grid>
     </form>
   );
 }

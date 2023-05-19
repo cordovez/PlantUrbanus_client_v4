@@ -99,10 +99,7 @@ export default function Weather() {
   const sky = lightBlue[50];
   if (sunriseLoading || weatherLoading || locationLoading)
     return (
-      <Typography variant="caption">
-        ... if weather data fails to load after a few seconds, try re-loading
-        the page.
-      </Typography>
+      <Typography variant="caption">... Weather data is loading ...</Typography>
     );
 
   //   weather
@@ -110,22 +107,23 @@ export default function Weather() {
   const weatherIcon = require(`../assets/images/weathericon/png/${weather.symbol_code}.png`);
   const description = weatherDescription(code_no_suffix);
 
+  const containerBoxStyles = {
+    width: "100%",
+    border: `1px solid ${sky} `,
+    padding: ".5rem",
+    marginBottom: "1rem",
+    marginTop: "1rem",
+    borderRadius: "12px",
+    color: "gray",
+    bgcolor: "white",
+  };
   return (
     <Grid
       container
       xs={12}
       md={6}
       justifyContent={"center"}
-      sx={{
-        width: "100%",
-        border: `1px solid ${sky} `,
-        padding: ".5rem",
-        marginBottom: "1rem",
-        marginTop: "1rem",
-        borderRadius: "12px",
-        color: "gray",
-        bgcolor: "white",
-      }}
+      sx={containerBoxStyles}
     >
       <Grid sm={2}>
         <Image src={weatherIcon} width={50} height={50} alt="weather icon" />

@@ -1,65 +1,84 @@
+/* eslint-disable @next/next/no-img-element */
 import post_plant from "@/axios/post_plant";
 import { Button } from "@mui/material";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "@/context/user_context";
 import Grid from "@mui/material/Unstable_Grid2";
 
-export default function AddPlant({ setOpen }) {
+export default function AddPlant({ setOpen, handleClose }) {
   const [token] = useContext(UserContext);
-  const [imageSelected, setImageSelected] = useState("");
+  const [fileData, setFileData] = useState("");
 
-  // Working with the default HTM input button
-  let input;
-  if (input) {
-    input.addEventListener("change", updateImageDisplay);
-  }
-  useEffect(() => {
-    input = document.querySelector("input");
-    input.style.opacity = 0;
-  });
+  const [preview, setPreview] = useState("hidden");
 
   const uploadImage = () => {
     const formData = new FormData();
-    formData.append("file", imageSelected);
+    formData.append("file", fileData);
     formData.append("upload_preset", "PlantUrbanus");
 
     post_plant(formData, token);
     setOpen(false);
   };
-  return (
-    <Grid container>
-      <Grid
-        xs={12}
-        container
-        spacing={-2}
-        justifyContent={"center"}
-        sx={{ bgcolor: "pink" }}
-      >
-        <input
-          type="file"
-          name="file"
-          id="image_upload"
-          accept=".jpg, .jpeg, .png, .webp"
-          onChange={(e) => {
-            setImageSelected(e.target.files[0]);
-          }}
-        />
-      </Grid>
-      <Grid
-        container
-        spacing={-2}
-        className="preview"
-        xs={12}
-        justifyContent={"center"}
-      >
-        <div className="preview"></div>
-      </Grid>
 
-      <Grid xs={12} container justifyContent={"center"}>
-        <Button variant="contained" onClick={uploadImage}>
-          Upload
-        </Button>
+  const previewImage = (event) => {
+    const imageFiles = event.target.files;
+
+    const imageFilesLength = imageFiles.length;
+    if (imageFilesLength > 0) {
+      const imageSrc = URL.createObjectURL(imageFiles[0]);
+
+      const imagePreviewElement = document.querySelector(
+        "#preview-selected-image"
+      );
+
+      imagePreviewElement.src = imageSrc;
+      imagePreviewElement.style.display = "block";
+    }
+  };
+
+  return (
+    <>
+      <Grid
+        container
+        spacing={5}
+        justifyContent={"center"}
+        sx={{ width: "70%" }}
+      >
+        <Grid container>
+          <img
+            id="preview-selected-image"
+            style={{ visibility: preview, maxWidth: "90%" }}
+            alt="selected plant image"
+          />
+        </Grid>
+
+        <Grid>
+          <label htmlFor="image_upload" className="custom_image_upload">
+            <input
+              type="file"
+              name="file"
+              id="image_upload"
+              accept=".jpg, .jpeg, .png, .webp"
+              onChange={(e) => {
+                previewImage(e);
+                setFileData(e.target.files[0]);
+                setPreview("visible");
+              }}
+            />
+          </label>
+        </Grid>
+
+        <Grid container justifyContent={"space-between"}>
+          <Grid>
+            <Button variant="contained" onClick={uploadImage}>
+              Upload
+            </Button>
+          </Grid>
+          <Grid>
+            <Button onClick={handleClose}>Cancel</Button>
+          </Grid>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 }

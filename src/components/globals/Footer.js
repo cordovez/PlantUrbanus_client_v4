@@ -10,8 +10,8 @@ export default function Footer() {
         padding: "6px",
         bgcolor: "#005404",
         color: "#fff",
-        position: "relative",
-        bottom: 0,
+        // position: "relative",
+        // bottom: 0,
         width: "100vw",
       }}
     >

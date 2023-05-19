@@ -82,13 +82,11 @@ export default function RegisterForm({ setOpen, setRegister }) {
         borderRadius: "12px",
         justifyContent: "center",
       }}
-      padding={1}
+      padding={"30px 40px"}
     >
       {success ? (
         <Grid>
-          <Alert sx={{ maxWidth: "195px" }} severity="success">
-            Success!, you will be redirected ...
-          </Alert>
+          <Alert severity="success">Success!, you will be redirected ...</Alert>
         </Grid>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -138,7 +136,7 @@ export default function RegisterForm({ setOpen, setRegister }) {
             />
           </Grid>
           {alert ? (
-            <Alert severity="error">
+            <Alert severity="error" sx={{ maxWidth: "195px" }}>
               <AlertTitle>Passwords Must Match</AlertTitle>
               This alert will disappear when passwords match.
             </Alert>

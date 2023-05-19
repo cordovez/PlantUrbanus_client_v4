@@ -2,10 +2,7 @@ import { useState } from "react";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import AddPlant from "../Forms/add_plant_form";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import Grid from "@mui/material/Unstable_Grid2";
 
 const style = {
@@ -13,7 +10,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "90%",
+  width: "70%",
   bgcolor: "background.paper",
   border: "1px solid #666",
   boxShadow: 24,
@@ -22,10 +19,12 @@ const style = {
 
 export default function BasicModal({
   children,
+  props,
   label,
-  FormData,
+  ModalBody,
   data,
   plant_id,
+  Icon,
 }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -33,22 +32,27 @@ export default function BasicModal({
 
   return (
     <>
-      <Button onClick={handleOpen} startIcon={<AddAPhotoIcon />}>
-        {label}
-      </Button>
+      <Grid container justifyContent={"space-between"}>
+        <Button onClick={handleOpen} startIcon={Icon}>
+          {label}
+        </Button>
+      </Grid>
+
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="modal-plant-photo-upload"
+        aria-describedby="modal-plant-photo-upload"
       >
-        <Box sx={style}>
+        <Box sx={style} display={"flex"} justifyContent={"center"}>
           {/* FormData is a misnomer: here it means just FormComponent */}
-          <FormData
+
+          <ModalBody
             setOpen={setOpen}
             dbData={data}
             plant_id={plant_id}
             handleClose={handleClose}
+            {...props}
           />
         </Box>
       </Modal>

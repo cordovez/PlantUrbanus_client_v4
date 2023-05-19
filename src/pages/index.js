@@ -15,7 +15,7 @@ import PlantUrbanusLogo from "../../public/PlantUrbanusLogo_white.svg";
 export default function Home() {
   const [register, setRegister] = useState(false);
   return (
-    <>
+    <Grid container flexDirection={"column"} marginTop={"10vh"}>
       <Image
         src={backgroundImage}
         alt="background ferns"
@@ -37,6 +37,10 @@ export default function Home() {
           <RegisterForm setRegister={setRegister} />
         )}
       </Grid>
-    </>
+    </Grid>
   );
 }
+
+Home.getLayout = function PageLayout(page) {
+  return <>{page}</>;
+};
