@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import { UserContext } from "@/context/user_context";
 import { get_me } from "@/axios/get_me";
 import RootLayout from "../layout";
+import UpdateMe from "@/components/Forms/update_me";
 
 export default function Me() {
   const contextData = useContext(UserContext);
@@ -39,7 +40,6 @@ export default function Me() {
   };
   if (loading) return " ... loading ...";
   if (user) {
-    const date = user.date_of_purchase;
     return (
       <Grid container marginBottom={"30px"}>
         <Grid zIndex={1} xs={12} marginBottom={"10px"}>
@@ -58,16 +58,10 @@ export default function Me() {
               placeholder={user.avatar.uri}
               alt={user.username}
               style={{ objectFit: "cover" }}
+              priority
             ></Image>
           </Grid>
-          <Grid
-            //   container
-            xs={12}
-            sm={8}
-            //   display={"flex"}
-            //   flexDirection={"column"}
-            //   flex={1}
-          >
+          <Grid xs={12} sm={8}>
             <Paper square={true} elevation={2} sx={{ padding: "1rem" }}>
               <Typography sx={lineStyles} variant="body2">
                 <span style={{ fontWeight: "bold" }}>Username: </span>
@@ -79,7 +73,7 @@ export default function Me() {
               </Typography>
               <Typography sx={lineStyles} variant="body2">
                 <span style={{ fontWeight: "bold" }}>Last name: </span>
-                <span>€ {user.last_name}</span>
+                <span> {user.last_name}</span>
               </Typography>
               <Typography sx={lineStyles} variant="body2">
                 <span style={{ fontWeight: "bold" }}>Email: </span>
@@ -95,9 +89,9 @@ export default function Me() {
               </Typography>
               <BasicModal
                 label="Edit"
-                // ModalBody={UpdatePlant}
+                ModalBody={UpdateMe}
+                user_id={user._id}
                 data={user}
-                // plant_id={plant_id}
                 Icon={<EditIcon />}
               />
             </Paper>

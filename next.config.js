@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         pathname: "/cordovez/image/upload/v1/PlantUrbanus/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.multiavatar.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

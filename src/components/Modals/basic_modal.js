@@ -24,6 +24,7 @@ export default function BasicModal({
   ModalBody,
   data,
   plant_id,
+  user_id,
   Icon,
 }) {
   const [open, setOpen] = useState(false);
